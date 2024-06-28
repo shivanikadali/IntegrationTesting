@@ -10,8 +10,4 @@ public class GetEmployeeDetailsApplication {
 		SpringApplication.run(GetEmployeeDetailsApplication.class, args);
 	}
 
-	// @Bean
-	// public WebClient webClient() {
-	// return WebClient.builder().build();
-	// }
 }

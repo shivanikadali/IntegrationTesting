@@ -1,0 +1,27 @@
+{
+  "id" : "1185c2dd-a52a-4bff-9498-60ea495d5fc8",
+  "name" : "employee",
+  "request" : {
+    "url" : "/employee",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\r\n    \"firstName\": \"thanu\",\r\n    \"lastName\": \"safari\",\r\n    \"email\": \"thanu.bown@example.com\"\r\n}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"empNo\":104,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "Date" : "Fri, 28 Jun 2024 05:59:22 GMT",
+      "Keep-Alive" : "timeout=60"
+    }
+  },
+  "uuid" : "1185c2dd-a52a-4bff-9498-60ea495d5fc8",
+  "persistent" : true,
+  "scenarioName" : "scenario-2-employee",
+  "requiredScenarioState" : "scenario-2-employee-2",
+  "insertionIndex" : 4
+}

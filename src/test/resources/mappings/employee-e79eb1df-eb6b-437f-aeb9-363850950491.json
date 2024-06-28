@@ -1,0 +1,22 @@
+{
+  "id" : "e79eb1df-eb6b-437f-aeb9-363850950491",
+  "name" : "employee",
+  "request" : {
+    "url" : "/employee",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "[{\"empNo\":81,\"firstName\":\"Eva\",\"lastName\":\"Brown\",\"email\":\"eva.brown@example.com\"},{\"empNo\":82,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":83,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":84,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":85,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":86,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":87,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":88,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":89,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":90,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":91,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":92,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":93,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":94,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":95,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":96,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":97,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":98,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":99,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":100,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":101,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"},{\"empNo\":102,\"firstName\":\"thanu\",\"lastName\":\"safari\",\"email\":\"thanu.bown@example.com\"}]",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "Date" : "Fri, 28 Jun 2024 05:59:22 GMT",
+      "Keep-Alive" : "timeout=60"
+    }
+  },
+  "uuid" : "e79eb1df-eb6b-437f-aeb9-363850950491",
+  "persistent" : true,
+  "scenarioName" : "scenario-1-employee",
+  "requiredScenarioState" : "scenario-1-employee-2",
+  "insertionIndex" : 2
+}

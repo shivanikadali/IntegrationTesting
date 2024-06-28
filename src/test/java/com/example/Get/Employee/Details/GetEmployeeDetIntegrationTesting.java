@@ -1,9 +1,5 @@
 package com.example.Get.Employee.Details;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
-import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -37,29 +33,12 @@ public class GetEmployeeDetIntegrationTesting {
         wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig().dynamicPort());
         wireMockServer.start();
         WireMock.configureFor("localhost", wireMockServer.port());
-
-        String expectedRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/employees.json")));
-        String allEmployeesRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/allEmployees.json")));
-
-        // Setup stub for the /employee endpoint
-        WireMock.stubFor(post(urlEqualTo("/employee"))
-                .willReturn(aResponse()
-                        .withHeader("Content-Type", "application/json")
-                        .withStatus(200)
-                        .withBody(
-                                expectedRequest)));
-
-        WireMock.stubFor(get(urlEqualTo("/employee"))
-                .willReturn(aResponse()
-                        .withHeader("Content-Type", "application/json")
-                        .withStatus(200)
-                        .withBody(
-                                allEmployeesRequest)));
-
+        wireMockServer.startRecording("http://localhost:9999");
     }
 
     @AfterAll
     public static void tearDown() {
+        wireMockServer.stopRecording();
         wireMockServer.stop();
     }
 
@@ -94,11 +73,10 @@ public class GetEmployeeDetIntegrationTesting {
         Response response = RestAssured.given()
                 .get("http://localhost:" + wireMockServer.port() + "/employee");
 
-        // Log the response
         System.out.println("Response Status Code: " + response.getStatusCode());
         System.out.println("Response Body: " + response.getBody().asString());
 
-        // Validate the status code
+        // Validating the status code
         response.then().assertThat().statusCode(200);
 
         // Parse the JSON response
@@ -114,8 +92,7 @@ public class GetEmployeeDetIntegrationTesting {
             String lastName = firstEmployee.getString("lastName");
             String email = firstEmployee.getString("email");
 
-            // Assertions for the first employee
-            assertEquals(1, empNo);
+            assertEquals(81, empNo);
             assertEquals("Eva", firstName);
             assertEquals("Brown", lastName);
             assertEquals("eva.brown@example.com", email);
@@ -127,7 +104,7 @@ public class GetEmployeeDetIntegrationTesting {
     }
 
     @Test
-    public void createEmployeeDetails() throws IOException, URISyntaxException, JSONException {
+    public void createEmployeeDetail() throws IOException, URISyntaxException, JSONException {
 
         String expectedRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/employees.json")));
 
@@ -145,5 +122,6 @@ public class GetEmployeeDetIntegrationTesting {
         JSONObject jsonObjectRes = new JSONObject(responseString);
         JSONObject jsonObjectexpect = new JSONObject(responseString);
         assertEquals(jsonObjectRes.getString("email"), jsonObjectexpect.getString("email"));
+
     }
 }
