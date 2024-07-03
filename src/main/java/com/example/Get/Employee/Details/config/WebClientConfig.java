@@ -12,7 +12,7 @@ public class WebClientConfig {
     private String url;
 
     @Bean
-    WebClient webclientBean() {
+    WebClient geographyBackFillWebClient() {
         return WebClient.builder()
                 .baseUrl(url)
                 .build();

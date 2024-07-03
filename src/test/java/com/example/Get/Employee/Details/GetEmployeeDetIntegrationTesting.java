@@ -1,5 +1,6 @@
 package com.example.Get.Employee.Details;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -33,12 +34,12 @@ public class GetEmployeeDetIntegrationTesting {
         wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig().dynamicPort());
         wireMockServer.start();
         WireMock.configureFor("localhost", wireMockServer.port());
-        wireMockServer.startRecording("http://localhost:9999");
+        // wireMockServer.startRecording("http://localhost:9999");
     }
 
     @AfterAll
     public static void tearDown() {
-        wireMockServer.stopRecording();
+        // wireMockServer.stopRecording();
         wireMockServer.stop();
     }
 
@@ -49,21 +50,8 @@ public class GetEmployeeDetIntegrationTesting {
                 .get("http://localhost:" + wireMockServer.port() + "/employee")
                 .then()
                 .assertThat()
-                .statusCode(200);
-    }
-
-    @Test
-    public void createEmployee() throws IOException, URISyntaxException {
-
-        String expectedRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/employees.json")));
-
-        RestAssured.given()
-                .contentType(ContentType.JSON)
-                .body(expectedRequest)
-                .post("http://localhost:" + wireMockServer.port() + "/employee")
-                .then()
-                .assertThat()
-                .statusCode(200);
+                .statusCode(200)
+                .body("firstName[0]",equalTo("Eva"));
     }
 
     // Detail validations using JSONArray
@@ -104,6 +92,23 @@ public class GetEmployeeDetIntegrationTesting {
     }
 
     @Test
+    public void createEmployee() throws IOException, URISyntaxException {
+
+        String expectedRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/employees.json")));
+
+        RestAssured.given()
+                .contentType(ContentType.JSON)
+                .body(expectedRequest)
+                .post("http://localhost:" + wireMockServer.port() + "/employee")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body("firstName",equalTo("thanu"))
+                .body("lastName",equalTo("safari"));
+
+    }
+
+    @Test
     public void createEmployeeDetail() throws IOException, URISyntaxException, JSONException {
 
         String expectedRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/employees.json")));
@@ -122,6 +127,5 @@ public class GetEmployeeDetIntegrationTesting {
         JSONObject jsonObjectRes = new JSONObject(responseString);
         JSONObject jsonObjectexpect = new JSONObject(responseString);
         assertEquals(jsonObjectRes.getString("email"), jsonObjectexpect.getString("email"));
-
     }
 }
